@@ -27,7 +27,6 @@
 
       </v-carousel-item>
     </v-carousel>
-    <br />
   </div>
 </template>
 

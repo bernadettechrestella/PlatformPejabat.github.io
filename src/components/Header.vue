@@ -26,7 +26,7 @@
 
             <!-- <v-toolbar-items class="hidden-xs-only"> -->
                 <v-btn class="hidden-xs-only" color="red" outlined rounded><router-link tag=btn to="/login">Masuk</router-link></v-btn>
-                <br />
+                <p>&emsp;</p>
                 <v-btn class="hidden-xs-only" color="red" outlined rounded><router-link tag=btn to="/register">Daftar</router-link></v-btn>
             <!-- </v-toolbar-items> -->
 

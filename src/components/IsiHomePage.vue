@@ -1,6 +1,6 @@
 <template>
-  <v-container>
-    <v-row wrap class="d-flex align-start mb-6">
+  <div>
+    <v-row wrap class="d-flex align-start mb-6 spacing-playground pa-10">
       <v-col cols="12" sm="6" md="8"
         v-if="!viewMoreActivated"> <!-- col berita -->
         <h3 class="red--text">Berita Terbaru</h3>
@@ -11,12 +11,13 @@
           v-for="(item,i) in items.slice(0,2)"
           :key="i">
           <v-col cols="4"><!-- col gambar -->
+            <router-link to="/detailBerita">
             <v-img
              :src="item.src"
-             height="150"/>
+             height="150"/></router-link>
           </v-col>
           <v-col cols="8" class="pl-2"> <!-- col judul berita -->
-            <h3 class="font-weight-bold" v-text="item.title"></h3>
+            <router-link style="text-decoration: none; color: black;" to="/detailBerita"><h3 class="font-weight-bold" v-text="item.title"></h3></router-link>
             <h5 class="font-weight-light" v-text="item.time"></h5>
           </v-col>
         </v-row>
@@ -77,7 +78,7 @@
       </v-col>
     </v-row>
 
-  </v-container>
+  </div>
 </template>
 
 <script>

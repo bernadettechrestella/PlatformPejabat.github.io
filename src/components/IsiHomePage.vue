@@ -41,13 +41,14 @@
           v-for="(item,i) in items"
           :key="i">
           <v-col cols="4"><!-- col gambar -->
+            <router-link to="/detailBerita">
             <v-img
              :src="item.src"
-             height="150"/>
+             height="150"/></router-link>
           </v-col>
           <v-col cols="8" class="pl-2"> <!-- col judul berita -->
-            <h3 class="font-weight-bold" v-text="item.title"></h3>
-            <h5 class="font-weight-light" v-text="item.time"></h5>
+            <router-link style="text-decoration: none; color: black;" to="/detailBerita"><h3 class="font-weight-bold" v-text="item.title"></h3></router-link>
+            <router-link style="text-decoration: none; color: black;" to="/detailBerita"><h5 class="font-weight-light" v-text="item.time"></h5></router-link>
           </v-col>
         </v-row>
         <br />

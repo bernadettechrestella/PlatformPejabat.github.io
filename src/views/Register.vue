@@ -1,21 +1,25 @@
 <template>
 
   <div class="reg_log">
-    <v-btn 
-        depressed
-        tile
-        width="280px"
-        height="55px"><router-link tag=btn to="/login">
-            Masuk</router-link>
-    </v-btn>
-    <v-btn 
-        depressed
-        tile
-        width="280px"
-        height="55px"
-        color="red"><router-link tag=btn to="/register">
-            Daftar</router-link>
-    </v-btn>
+    <router-link tag=btn to="/login">
+        <v-btn 
+            depressed
+            tile
+            width="280px"
+            height="55px">
+                Masuk
+        </v-btn>
+    </router-link>
+    <router-link tag=btn to="/register">
+        <v-btn 
+            depressed
+            tile
+            width="280px"
+            height="55px"
+            color="red">
+                Daftar
+        </v-btn>
+    </router-link>
 
     <v-row 
         no-gutters

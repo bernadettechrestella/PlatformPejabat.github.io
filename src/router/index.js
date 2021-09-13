@@ -27,7 +27,32 @@ const routes = [
     path: '/detailBerita',
     name: 'DetailBerita',
     component: () => import(/* webpackChunkName: "about" */ '../views/DetailBerita.vue')
-  }
+  },
+  {
+    path: '/profil',
+    name: 'Profil',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Profil.vue')
+  },
+  {
+    path: '/editProfil',
+    name: 'EditProfil',
+    component: () => import(/* webpackChunkName: "about" */ '../views/EditProfil.vue')
+  },
+  {
+    path: '/gantiEmail',
+    name: 'GantiEmail',
+    component: () => import(/* webpackChunkName: "about" */ '../views/GantiEmail.vue')
+  },
+  {
+    path: '/verifikasiEmail',
+    name: 'VerifikasiEmail',
+    component: () => import(/* webpackChunkName: "about" */ '../views/VerifikasiEmail.vue')
+  },
+  {
+    path: '/gantiPassword',
+    name: 'GantiPassword',
+    component: () => import(/* webpackChunkName: "about" */ '../views/GantiPassword.vue')
+  },
 ]
 
 const router = new VueRouter({

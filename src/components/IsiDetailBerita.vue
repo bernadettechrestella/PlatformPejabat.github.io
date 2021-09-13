@@ -42,13 +42,15 @@
                     rows="2"
                     row-height="30"
                     ></v-textarea>
-                <v-spacer></v-spacer>
-                <v-btn
-                    width="100px"
-                    color="red"
-                    class="d-flex align-right justify-center pa-4 mx-auto white--text">
-                    Kirim
-                </v-btn>
+                <!-- <v-spacer></v-spacer> -->
+                <v-row align="end" justify="end" class="pr-4">
+                    <v-btn
+                        width="100px"
+                        color="red"
+                        class="d-flex pa-4 white--text">
+                        Kirim
+                    </v-btn>
+                </v-row>
                 <br />
                 <v-sheet rounded outlined color="red">
                 <v-card
@@ -113,13 +115,15 @@
                                     rows="1"
                                 ></v-textarea>
                             </v-list-item>
-                            <v-spacer></v-spacer>
-                            <v-btn
-                                width="100px"
-                                color="red"
-                                class="d-flex align-right justify-center pa-4 mx-auto white--text">
-                                Balas
-                            </v-btn>
+                            <!-- <v-spacer></v-spacer> -->
+                            <v-row align="end" justify="end" class="pr-7">
+                                <v-btn
+                                    width="100px"
+                                    color="red"
+                                    class="d-flex align-center justify-center pa-4 white--text">
+                                    Balas
+                                </v-btn>
+                            </v-row>
                             <br />
                         </div>
                     </v-expand-transition>

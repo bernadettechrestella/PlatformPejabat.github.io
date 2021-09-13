@@ -74,7 +74,7 @@
 
                             <p></p>
 
-                            <v-btn 
+                            <router-link to="/" tag="btn"><v-btn 
                                 rounded
                                 width="229px"
                                 height="40px"
@@ -83,7 +83,7 @@
                                 @click="redirectHome"
                             >
                                 Masuk
-                            </v-btn>
+                            </v-btn></router-link>
                         </v-form>
                     </v-col>
                 </v-row>

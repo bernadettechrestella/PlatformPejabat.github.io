@@ -25,9 +25,9 @@
             </v-btn> -->
 
             <!-- <v-toolbar-items class="hidden-xs-only"> -->
-                <v-btn class="hidden-xs-only" color="red" outlined rounded><router-link tag=btn to="/login">Masuk</router-link></v-btn>
+                <router-link tag=btn to="/login"><v-btn class="hidden-xs-only" color="red" outlined rounded>Masuk</v-btn></router-link>
                 <p>&emsp;</p>
-                <v-btn class="hidden-xs-only" color="red" outlined rounded><router-link tag=btn to="/register">Daftar</router-link></v-btn>
+                <router-link tag=btn to="/register"><v-btn class="hidden-xs-only" color="red" outlined rounded>Daftar</v-btn></router-link>
             <!-- </v-toolbar-items> -->
 
             <div class="hidden-sm-and-up">

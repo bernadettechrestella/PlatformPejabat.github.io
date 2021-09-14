@@ -4,18 +4,19 @@
             <v-toolbar-title>
                 <div class="header">
                     <v-img
-                    :src="require('../assets/logo.png')"
-                    class="logo"
-                    contain
-                    height="50"
-                />
+                        :src="require('../assets/logo.png')"
+                        class="logo"
+                        contain
+                        height="50"
+                        v-on:click="redirect"
+                    />
                 </div>
             </v-toolbar-title>
 
             <v-toolbar-items class="hidden-xs-only">
-                <v-btn text color="red"><router-link tag=btn to="/">Berita</router-link></v-btn>
-                <v-btn text color="red"><router-link tag=btn to="/">Cari Profil</router-link></v-btn>
-                <v-btn text color="red"><router-link tag=btn to="/">Tentang Kami</router-link></v-btn>
+                <v-btn text color="red">Berita</v-btn>
+                <v-btn text color="red">Cari Profil</v-btn>
+                <v-btn text color="red">Tentang Kami</v-btn>
             </v-toolbar-items>
 
             <v-spacer></v-spacer>
@@ -24,10 +25,82 @@
                 <v-icon>mdi-magnify</v-icon>
             </v-btn> -->
 
-            <!-- <v-toolbar-items class="hidden-xs-only"> -->
-                <router-link tag=btn to="/login"><v-btn class="hidden-xs-only" color="red" outlined rounded>Masuk</v-btn></router-link>
+                    <v-btn
+                        class="hidden-xs-only"
+                        color="red"
+                        outlined
+                        rounded
+                        v-if="this.$session.has('loginStat') == false"
+                        to="/login"
+                    >Masuk</v-btn>
+
+                    <v-menu
+                        top
+                        :close-on-click="closeOnClick"
+                        v-if="this.$session.get('loginStat') == true"
+                    >
+                        <template v-slot:activator="{on, attrs}">
+                            <!-- <v-btn
+                                class="hidden-xs-only"
+                                color="red"
+                                outlined
+                                rounded
+                                v-bind="attrs"
+                                v-on="on"
+                            ><span v-text="this.$session.get('namaUser')"></span></v-btn> -->
+                            <v-avatar
+                                color="primary"
+                                size="50"
+                                class="d-flex spacing-around"
+                                v-bind="attrs"
+                                v-on="on"
+                            ></v-avatar>
+                        </template>
+
+                        <v-list>
+                            <v-list-item>
+                                <v-btn
+                                    text
+                                    class="hidden-xs-only"
+                                    to="/profil"
+                                >Bambang</v-btn>
+                            </v-list-item>
+                            <v-divider></v-divider>
+                            <v-list-item>
+                                <v-btn
+                                    text
+                                    class="hidden-xs-only"
+                                    to="/gantiEmail"
+                                >Ganti Email</v-btn>
+                            </v-list-item>
+                            <v-list-item>
+                                <v-btn
+                                    text
+                                    class="hidden-xs-only"
+                                    to="/gantiPassword"
+                                >Ganti Password</v-btn>
+                            </v-list-item>
+                                <v-divider></v-divider>
+                            <v-list-item>
+                                <v-btn
+                                    text
+                                    class="hidden-xs-only"
+                                    @click="logout()"
+                                >Logout</v-btn>
+                            </v-list-item>
+                        </v-list>
+                    </v-menu>
+
                 <p>&emsp;</p>
-                <router-link tag=btn to="/register"><v-btn class="hidden-xs-only" color="red" outlined rounded>Daftar</v-btn></router-link>
+
+                    <v-btn
+                        class="hidden-xs-only"
+                        color="red"
+                        outlined
+                        rounded
+                        v-if="this.$session.has('loginStat') == false"
+                    >Daftar</v-btn>
+                    
             <!-- </v-toolbar-items> -->
 
             <div class="hidden-sm-and-up">
@@ -60,7 +133,20 @@
 
 <script>
 export default {
-    name: "Header"
+    name: "Header",
+    methods : {
+        logout(){
+            this.$session.destroy()
+            if (this.$route.name !== 'HomePage') {
+                this.$router.push('/')
+            } else {
+                window.location.reload()
+            }
+        },
+        redirect(){
+            this.$router.push('/')
+        }
+    }
 }
 </script>
 

@@ -56,12 +56,13 @@
 
                             <p>Password</p>
                             <v-text-field
-                                v-model="password"
-                                :rules="password"
+                                :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+                                :type="show ? 'text' : 'password'"
                                 label=""
                                 clearable
                                 required
                                 color="red"
+                                @click:append="show = !show"
                             ></v-text-field>
 
                             <v-checkbox
@@ -74,16 +75,17 @@
 
                             <p></p>
 
-                            <router-link to="/" tag="btn"><v-btn 
+                            <v-btn 
                                 rounded
                                 width="229px"
                                 height="40px"
                                 color="red"
                                 class="d-flex align-center justify-center pa-4 mx-auto"
-                                @click="redirectHome"
+                                @click="login()"
                             >
                                 Masuk
-                            </v-btn></router-link>
+                            </v-btn>
+
                         </v-form>
                     </v-col>
                 </v-row>
@@ -103,6 +105,41 @@
 
 <script>
 export default {
-    name: "Login"
+    name: "Login",
+    data() {
+        return {
+            show: false,
+        }
+    },
+    methods: {
+        login () {
+            this.$session.start()
+            this.$session.set('loginStat', true)
+            this.$session.set('namaUser', 'bambang')
+            this.$router.push('/')
+    //   this.isLoading = true
+    //   const data = await apiService.login(this.param).then((succ) => succ)
+    //   console.log(data)
+    //   if (data.code === 1) {
+    //     var session = {
+    //       dus: data.dataUser,
+    //       tok: data.token,
+    //       menu: data.Menu,
+    //       ref: data.refreshToken
+    //     }
+    //     this.$session.start()
+    //     this.$session.set('loginStat', true)
+    //     this.$session.set('usDa', session)
+    //     this.$router.push('/')
+    //   } else {
+    //     this.dialog = true
+    //     this.dialogMsg = data.msg
+        // console.log(data.msg)
+    //   }
+      // this.$session.set('loginStat', true)
+      // this.$router.push('/Tappenas_BNI')
+    //   this.isLoading = false
+    }
+  }
 }
 </script>

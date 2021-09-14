@@ -61,7 +61,7 @@
                         <v-list-item-avatar
                             size="40"
                             color="grey">
-                            <span class="white--text text-h5">B</span>
+                            <!-- <span class="white--text text-h5 pl-3">B</span> -->
                         </v-list-item-avatar>
                         <v-list-item-title class="text-h7 mb-1">
                             Bambang Prakasa
@@ -105,7 +105,7 @@
                                 <v-list-item-avatar
                                     size="30"
                                     color="grey">
-                                    <span class="white--text text-h7">B</span>
+                                    <!-- <span class="white--text text-h7 pl-3">B</span> -->
                                 </v-list-item-avatar>
                                 <v-textarea
                                     label="Tulis Balasan Publik.."
@@ -140,7 +140,7 @@
                         <v-list-item-avatar
                             size="40"
                             color="grey">
-                            <span class="white--text text-h5">B</span>
+                            <!-- <span class="white--text text-h5">B</span> -->
                         </v-list-item-avatar>
                         <v-list-item-title class="text-h7 mb-1">
                             Bambang Pamungkas
@@ -233,7 +233,7 @@
                     color="red"
                 >
                     <v-icon dark>
-                        mdi-line
+                        mdi-telegram
                     </v-icon>
                 </v-btn>
                 <br />

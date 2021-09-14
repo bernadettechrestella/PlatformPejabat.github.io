@@ -32,7 +32,7 @@
       </v-col>
       <!-- col berita sesudah view more-->
       <v-col cols="12" sm="6" md="8"
-        v-if="viewMoreActivated"> 
+        v-if="viewMoreActivated">
         <h3 class="red--text">Berita Terbaru</h3>
         <v-divider style="background-color:red; height: 20px; width:17%;"></v-divider>
         <v-divider style="background-color:red; height: 5px; width:100%;"></v-divider>

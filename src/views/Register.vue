@@ -56,22 +56,24 @@
 
                                     <p>Password</p>
                                     <v-text-field
-                                        v-model="password"
-                                        :rules="password"
+                                        :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+                                        :type="show ? 'text' : 'password'"
                                         label=""
                                         clearable
                                         required
                                         color="red"
+                                        @click:append="show = !show"
                                     ></v-text-field>
 
                                     <p>Konfirmasi Password</p>
                                     <v-text-field
-                                        v-model="konfirmasipassword"
-                                        :rules="konfirmasipassword"
+                                        :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+                                        :type="show ? 'text' : 'password'"
                                         label=""
                                         clearable
                                         required
                                         color="red"
+                                        @click:append="show = !show"
                                     ></v-text-field>
 
                                     <v-checkbox
@@ -113,6 +115,11 @@
 
 <script>
 export default {
-    name: "Register"
+    name: "Register",
+    data() {
+        return {
+            show: false,
+        }
+    },
 }
 </script>

@@ -92,8 +92,8 @@
                                         height="40px"
                                         color="red"
                                         class="d-flex align-center justify-center pa-4 mx-auto"
-                                        @click="redirectLogin"
-                                        >
+                                        @click="login()"
+                                    >
                                         Daftar
                                     </v-btn>
                         </v-form>
@@ -119,6 +119,14 @@ export default {
     data() {
         return {
             show: false,
+        }
+    },
+    methods: {
+        login () {
+            this.$session.start()
+            this.$session.set('loginStat', true)
+            this.$session.set('namaUser', 'bambang')
+            this.$router.push('/')
         }
     },
 }

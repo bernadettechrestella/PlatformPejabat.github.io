@@ -69,10 +69,11 @@
             <v-img
               :src="item.src"
               contain
-              height="100"/>
+              height="100"
+              v-on:click="redirect"/>
           </v-col>
           <v-col cols="6" class="pl-2"> <!-- col nama profil -->
-            <h3 class="font-weight-bold" v-text="item.title"></h3>
+            <router-link to="/profilPejabat" style="text-decoration: none; color: black;"><h3 class="font-weight-bold" v-text="item.title"></h3></router-link>
             <h5 class="font-weight-light" v-text="item.rating"></h5>
           </v-col>
         </v-row>
@@ -147,6 +148,9 @@ export default {
   methods: {
     viewMore(){
       this.viewMoreActivated = true;
+    },
+    redirect(){
+            this.$router.push('/profilPejabat')
     }
   }
 };

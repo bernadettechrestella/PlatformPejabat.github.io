@@ -1,5 +1,7 @@
 <template>
     <div>
+        <v-divider style="background-color:#EEEEEE; height: 20px; width:100%;"></v-divider>
+        <v-divider style="background-color:#EEEEEE; height: 20px; width:100%;"></v-divider>
         <v-row wrap class="d-flex align-start mb-6 spacing-playground pa-10">
             <v-col cols="4">
                 <v-row class="justify-center align-center">
@@ -8,21 +10,13 @@
                         size="200"
                         class="d-flex spacing-around"
                     ></v-avatar> -->
-                    <div>
-                    <picture-input
-                        ref="pictureInput"
-                        @change="onChanged"
-                        :width="500"
-                        :removable="true"
-                        removeButtonClass="ui red button"
-                        :height="500"
-                        accept="image/jpeg, image/png, image/jpg"
-                        buttonClass="ui button primary"
-                        :customStrings="{
-                            upload: '<h1>Upload it!</h1>',
-                            drag: 'Drag and drop your image here'}"
-                    >
-                    </picture-input>
+                    <div class="container">
+                        <div class="large-12 medium-12 small-12 cell">
+                            <label>Upload Photo
+                                <input type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
+                            </label>
+                                <button v-on:click="submitFile()">Submit</button>
+                        </div>
                     </div>
                 </v-row>
             </v-col>
@@ -103,14 +97,31 @@
 export default {
     name: "IsiEditProfil",
     methods: {
-        onChanged() {
-            console.log("New picture loaded");
-            if (this.$refs.pictureInput.file) {
-            this.image = this.$refs.pictureInput.file;
-            } else {
-            console.log("Old browser. No support for Filereader API");
-            }
+        handleFileUpload(){
+            this.file = this.$refs.file.files[0];
         },
-    }
+        // submitFile(){
+        //     let formData = new FormData();
+        //     formData.append('file, this.file');
+        //     axios.post('/single-file',
+        //         formData,
+        //         {
+        //             headers: {
+        //                 'Content-Type' : 'multipart/form-data'
+        //             }
+        //         }
+        //     ).then(function(){
+        //         console.log('SUCCESS!!');
+        //     })
+        //     .catch(function(){
+        //         console.log('FAILURE!!');
+        //     });
+        // },
+    },
+    data() {
+        return {
+            file: ''
+        }
+    },
 }
 </script>

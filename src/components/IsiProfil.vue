@@ -1,5 +1,7 @@
 <template>
     <div>
+        <v-divider style="background-color:#EEEEEE; height: 20px; width:100%;"></v-divider>
+        <v-divider style="background-color:#EEEEEE; height: 20px; width:100%;"></v-divider>
         <v-row wrap class="d-flex align-start mb-6 spacing-playground pa-10">
             <v-col cols="4">
                 <v-row class="align-center justify-center">

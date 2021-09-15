@@ -15,7 +15,7 @@
 
             <v-toolbar-items class="hidden-xs-only">
                 <v-btn text color="red">Berita</v-btn>
-                <v-btn text color="red">Cari Profil</v-btn>
+                <v-btn text color="red" to="/cariProfil">Cari Profil</v-btn>
                 <v-btn text color="red">Tentang Kami</v-btn>
             </v-toolbar-items>
 
@@ -99,6 +99,7 @@
                         outlined
                         rounded
                         v-if="this.$session.has('loginStat') == false"
+                        to="/register"
                     >Daftar</v-btn>
                     
             <!-- </v-toolbar-items> -->

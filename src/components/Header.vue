@@ -4,10 +4,10 @@
             <v-toolbar-title>
                 <div class="header">
                     <v-img
-                        :src="require('../assets/logo.png')"
+                        :src="require('../assets/WAKILMU.jpeg')"
                         class="logo"
-                        contain
-                        height="50"
+                        height="55"
+                        width="200"
                         v-on:click="redirect"
                     />
                 </div>
@@ -26,9 +26,8 @@
             </v-btn> -->
 
                     <v-btn
-                        class="hidden-xs-only"
+                        class="hidden-xs-only white--text"
                         color="red"
-                        outlined
                         rounded
                         v-if="this.$session.has('loginStat') == false"
                         to="/login"

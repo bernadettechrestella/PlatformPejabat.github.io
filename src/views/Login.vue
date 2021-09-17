@@ -2,7 +2,7 @@
 
   <div class="reg_log">
     <router-link tag=btn to="/login">
-        <v-btn 
+        <v-btn class="white--text"
             depressed
             tile
             width="280px"
@@ -12,7 +12,7 @@
         </v-btn>
     </router-link>
     <router-link tag=btn to="/register">
-        <v-btn 
+        <v-btn class="red--text"
             depressed
             tile
             width="280px"
@@ -33,7 +33,7 @@
                 <v-row>
                     <v-col md="20">
                         <v-img
-                            :src="require('../assets/logo.svg')"
+                            :src="require('../assets/WAKILMU.jpeg')"
                             class="my-3"
                             contain
                             height="100"
@@ -75,12 +75,12 @@
 
                             <p></p>
 
-                            <v-btn 
+                            <v-btn
                                 rounded
                                 width="229px"
                                 height="40px"
                                 color="red"
-                                class="d-flex align-center justify-center pa-4 mx-auto"
+                                class="d-flex align-center justify-center pa-4 mx-auto white--text"
                                 @click="login()"
                             >
                                 Masuk
@@ -97,7 +97,7 @@
 
 <style scoped>
 .reg_log {
-  background: url('../assets/background.jpeg');
+  background: url('../assets/background2.jpeg');
   background-size: cover;
   height: 100vh;
 }

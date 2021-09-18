@@ -46,11 +46,12 @@
             <router-link to="/detailBerita">
             <v-img
              :src="item.image"
+             @click="redirectDetailBerita(item)"
              height="150"/></router-link>
           </v-col>
           <v-col cols="8" class="pl-2"> <!-- col judul berita -->
-            <router-link style="text-decoration: none; color: black;" to="/detailBerita"><h3 class="font-weight-bold" v-text="item.title"></h3></router-link>
-            <router-link style="text-decoration: none; color: black;" to="/detailBerita"><h5 class="font-weight-light" v-text="item.isoDate"></h5></router-link>
+            <a @click="redirectDetailBerita(item)" class="font-weight-bold black--text text-h6" v-text="item.title"></a>
+            <h5 class="font-weight-light" v-text="item.isoDate"></h5>
           </v-col>
         </v-row>
         <br />

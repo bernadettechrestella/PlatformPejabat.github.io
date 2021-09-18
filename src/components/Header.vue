@@ -4,10 +4,11 @@
             <v-toolbar-title>
                 <div class="header">
                     <v-img
-                        :src="require('../assets/WAKILMU.jpeg')"
+                        :src="require('../assets/logoWakilmu.png')"
                         class="logo"
-                        height="55"
+                        height="45"
                         width="200"
+                        contain
                         v-on:click="redirect"
                     />
                 </div>

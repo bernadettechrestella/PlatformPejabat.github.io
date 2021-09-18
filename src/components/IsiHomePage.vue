@@ -8,17 +8,19 @@
         <v-divider style="background-color:red; height: 5px; width:100%;"></v-divider>
         <br />
         <v-row align="center"
-          v-for="(item,i) in items.slice(0,2)"
-          :key="i">
+          v-for="(item,i) in items.slice(0,5)"
+          :key="i"
+          >
           <v-col cols="4"><!-- col gambar -->
-            <router-link to="/detailBerita">
             <v-img
-             :src="item.src"
-             height="150"/></router-link>
+              @click="redirectDetailBerita(item)"
+              :src="item.image"
+              height="150"/>
           </v-col>
           <v-col cols="8" class="pl-2"> <!-- col judul berita -->
-            <router-link style="text-decoration: none; color: black;" to="/detailBerita"><h3 class="font-weight-bold" v-text="item.title"></h3></router-link>
-            <h5 class="font-weight-light" v-text="item.time"></h5>
+            <!-- <router-link style="text-decoration: none; color: black;" to="/detailBerita"><h3 class="font-weight-bold" v-text="item.title"></h3></router-link> -->
+            <a @click="redirectDetailBerita(item)" class="font-weight-bold black--text text-h6" v-text="item.title"></a>
+            <h5 class="font-weight-light" v-text="item.isoDate"></h5>
           </v-col>
         </v-row>
         <br />
@@ -38,17 +40,17 @@
         <v-divider style="background-color:red; height: 5px; width:100%;"></v-divider>
         <br />
         <v-row align="center"
-          v-for="(item,i) in items"
+          v-for="(item,i) in items.slice(0,10)"
           :key="i">
           <v-col cols="4"><!-- col gambar -->
             <router-link to="/detailBerita">
             <v-img
-             :src="item.src"
+             :src="item.image"
              height="150"/></router-link>
           </v-col>
           <v-col cols="8" class="pl-2"> <!-- col judul berita -->
             <router-link style="text-decoration: none; color: black;" to="/detailBerita"><h3 class="font-weight-bold" v-text="item.title"></h3></router-link>
-            <router-link style="text-decoration: none; color: black;" to="/detailBerita"><h5 class="font-weight-light" v-text="item.time"></h5></router-link>
+            <router-link style="text-decoration: none; color: black;" to="/detailBerita"><h5 class="font-weight-light" v-text="item.isoDate"></h5></router-link>
           </v-col>
         </v-row>
         <br />
@@ -84,37 +86,15 @@
 </template>
 
 <script>
+import {Services} from '../services/Services'
+
+const APIServices = new Services()
+
 export default {
   name: "IsiHomePage",
   data() {
     return {
-      items: [
-        {
-          src: require("../assets/background.jpeg"),
-          title: "Wewenang Baru Megawati Usai Jokowi Teken Perpres Baru BRIN",
-          time: "2 jam yang lalu"
-        },
-        {
-          src: require("../assets/background.jpeg"),
-          title: "Wewenang Baru Megawati Usai Jokowi Teken Perpres Baru BRIN",
-          time: "2 jam yang lalu"
-        },
-        {
-          src: require("../assets/background.jpeg"),
-          title: "Wewenang Baru Megawati Usai Jokowi Teken Perpres Baru BRIN",
-          time: "2 jam yang lalu"
-        },
-        {
-          src: require("../assets/background.jpeg"),
-          title: "Wewenang Baru Megawati Usai Jokowi Teken Perpres Baru BRIN",
-          time: "2 jam yang lalu"
-        },
-        {
-          src: require("../assets/background.jpeg"),
-          title: "Wewenang Baru Megawati Usai Jokowi Teken Perpres Baru BRIN",
-          time: "2 jam yang lalu"
-        }
-      ],
+      items: [],
       viewMoreActivated: false,
       itempopuler: [
         {
@@ -145,12 +125,33 @@ export default {
       ]
     };
   },
+  async mounted() {
+    this.getnews().then((data) => {
+      this.items = data.data
+    })
+    console.log(this.items)
+  },
   methods: {
     viewMore(){
       this.viewMoreActivated = true;
     },
     redirect(){
-            this.$router.push('/profilPejabat')
+      this.$router.push('/profilPejabat')
+    },
+    redirectDetailBerita(item){
+      this.$session.start()
+      this.$session.set('newsDa', item)
+      this.$router.push('/DetailBerita')
+    },
+    async getnews() {
+      const data = await APIServices.news2()
+      .then((succ) => succ)
+      .catch((error) => error)
+      if (data.status === "ok") {
+        return data
+      } else {
+        return data
+      }
     }
   }
 };

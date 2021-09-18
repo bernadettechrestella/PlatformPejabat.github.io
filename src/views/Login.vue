@@ -33,12 +33,11 @@
                 <v-row>
                     <v-col md="20">
                         <v-img
-                            :src="require('../assets/WAKILMU.jpeg')"
-                            class="my-3"
+                            :src="require('../assets/logologin.png')"
                             contain
-                            height="100"
+                            height="75"
                         />
-
+                        <br />
                         <v-form 
                             ref="form"
                             v-model="valid"
@@ -46,7 +45,7 @@
                         >
                             <p>Email</p>
                             <v-text-field
-                                v-model="email"
+                                v-model="param.email"
                                 :rules="emailRules"
                                 label=""
                                 clearable
@@ -56,6 +55,7 @@
 
                             <p>Password</p>
                             <v-text-field
+                                v-model="param.password"
                                 :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
                                 :type="show ? 'text' : 'password'"
                                 label=""
@@ -104,42 +104,37 @@
 </style>
 
 <script>
+import {Services} from '../services/Services'
+const APIServices = new Services()
+
 export default {
     name: "Login",
     data() {
         return {
             show: false,
+            param: {
+                username: '',
+                password: '',
+            }
         }
     },
     methods: {
-        login () {
-            this.$session.start()
-            this.$session.set('loginStat', true)
-            this.$session.set('namaUser', 'bambang')
-            this.$router.push('/')
-    //   this.isLoading = true
-    //   const data = await apiService.login(this.param).then((succ) => succ)
-    //   console.log(data)
-    //   if (data.code === 1) {
-    //     var session = {
-    //       dus: data.dataUser,
-    //       tok: data.token,
-    //       menu: data.Menu,
-    //       ref: data.refreshToken
-    //     }
-    //     this.$session.start()
-    //     this.$session.set('loginStat', true)
-    //     this.$session.set('usDa', session)
-    //     this.$router.push('/')
-    //   } else {
-    //     this.dialog = true
-    //     this.dialogMsg = data.msg
-        // console.log(data.msg)
-    //   }
-      // this.$session.set('loginStat', true)
-      // this.$router.push('/Tappenas_BNI')
-    //   this.isLoading = false
-    }
-  }
+        async login() {
+            const data = await APIServices.login(this.param).then((succ) => succ)
+            console.log(data)
+            if (data.code === 1) {
+                var session = {
+                    email: data.email,
+                    password: data.password,
+                }
+                this.$session.start()
+                this.$session.set('loginStat', true)
+                this.$session.set('dataUser', session)
+                this.$router.push('/')
+            } else {
+                console.log(data)
+            }
+            }
+        }
 }
 </script>

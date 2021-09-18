@@ -4,8 +4,8 @@
         <v-divider style="background-color:#EEEEEE; height: 20px; width:100%;"></v-divider>
         <v-row wrap class="d-flex align-start mb-6 spacing-playground pl-10 pr-10 pt-5">
             <v-col cols="12" sm="6" md="8"> <!-- kolom kiri -->
-                <h1 class="font-weight-bold">Haji Lulung Keluar PAN Balik ke PPP: Desakan para Ulama</h1>
-                <h5 class="font-weight-light">Selasa, 7 September 2021 15:16 WIB</h5>
+                <h1 class="font-weight-bold" v-text="item.title"></h1> <!-- Judul berita -->
+                <h5 class="font-weight-light" v-text="item.isoDate"></h5> <!-- tanggal berita -->
             </v-col>
             <v-col cols="6" md="4"> <!-- kolom kanan -->
             </v-col>
@@ -14,21 +14,15 @@
             <v-col cols="12" sm="6" md="8"> <!-- kolom kiri -->
                 <!-- gambar berita -->
                 <v-img
-                    :src="require('../assets/background.jpeg')"
+                    :src="item.image"
                     height="400"/>
                 <br />
                 <!-- isi berita -->
-                <p>Jakarta, CNN Indonesia -- Abraham Lunggana atau yang akrab disapa Haji Lulung resmi menyatakan berhenti dari keanggotaan Partai Amanat Nasional (PAN) untuk kembali ke partai lamanya, PPP.
-                    Lulung mengaku sudah membuat surat menyatakan berhenti dari PAN pada 1 September 2021 yang diserahkan kepada Ketum PAN Zulkifli Hasan (Zulhas).
-                    "Bukan pindah, tapi balik ke PPP. Kalau pindah kesannya saya loncat-loncat. Mulai tanggal 1 September saya sudah buat surat ke Pak Zulhas. Surat itu menyatakan berhenti, bukan pengunduran diri ya," kata Lulung kepada CNNIndonesia.com, Selasa (7/9).
-                    Diketahui, Lulung sempat pindah dari PPP ke PAN pada medio 2018. Lulung menyebut kalau itu dipecat PPP lantaran enggan mendukung Basuki Tjahaja Purnama atau Ahok pada Pilkada DKI 2017.
-                    Lulung mengklaim alasan utama kembali ke PPP semata-mata karena desakan dari para ulama. Ulama-ulama itu, kata dia, meminta agar dirinya membesarkan kembali PPP. Lulung mengklaim tak memiliki masalah dengan jajaran petinggi PAN selama ini. Ia mengatakan Zulhas sudah mengizinkan dirinya untuk kembali ke PPP.
-                    "Saya permisi ke Pak Zul saya kembali ke PAN. Karena desakan ulama. Saya dikasih jempol ama Pak Zulhas," kata dia.
-                    Terpisah, Sekretaris Jendral PAN Eddy Soeparno membenarkan bahwa Lulung sudah menyatakan pengunduran dirinya dari PAN. Surat pengunduran diri Lulung itu sudah ia terima pada Jumat (3/9).
-                    "Benar pak Haji Lulung kembali ke PPP. Beliau mengirimkan surat pengunduran dirinya menyampaikan niatnya kembali ke PPP. Memimpin PPP Jakarta," kata Eddy kepada CNNIndonesia.com.
-                    Eddy mengucapkan selamat kepada Lulung atas amanah barunya tersebut. Ia mengklaim merasa kehilangan Lulung karena sama-sama bersama di Komisi VII DPR sejak awal periode 2019.
-                    Eddy pun memastikan PAN akan melakukan pergantian Antarwaktu (PAW) untuk menggantikan posisi Lulung di DPR RI usai kembali ke PPP. Diketahui, Lulung lolos menjadi anggota DPR RI dari PAN pada pemilu 2019.
-                    "Meski saya merasa kehilangan karena Haji Lulung rekan saya di komisi 7. Saya hormati keputusan Haji Lulung. Sebagai saudara kita akan tetap silaturahmi," kata Eddy.</p>
+                <p v-text="item.description"></p>
+                <v-row align="end" justify="end">
+                <!-- link berita -->
+                <v-btn class="red--text" text :href="item.link">Berita Selengkapnya...</v-btn>
+                </v-row>
                 <!--komentar -->
                 <h3 class="red--text">Komentar</h3>
                 <v-divider style="background-color:red; height: 20px; width:17%;"></v-divider>
@@ -344,65 +338,65 @@
 </template>
 
 <script>
+import {Services} from '../services/Services'
+
+const APIServices = new Services()
+
 export default {
     name: "IsiDetailBerita",
-    data: () => ({
-        show: false,
-        show2: false,
-        items: [
-        {
-          src: require("../assets/background.jpeg"),
-          title: "Wewenang Baru Megawati Usai Jokowi Teken Perpres Baru BRIN",
-          time: "2 jam yang lalu"
-        },
-        {
-          src: require("../assets/background.jpeg"),
-          title: "Wewenang Baru Megawati Usai Jokowi Teken Perpres Baru BRIN",
-          time: "2 jam yang lalu"
-        },
-        {
-          src: require("../assets/background.jpeg"),
-          title: "Wewenang Baru Megawati Usai Jokowi Teken Perpres Baru BRIN",
-          time: "2 jam yang lalu"
-        },
-        {
-          src: require("../assets/background.jpeg"),
-          title: "Wewenang Baru Megawati Usai Jokowi Teken Perpres Baru BRIN",
-          time: "2 jam yang lalu"
-        },
-        {
-          src: require("../assets/background.jpeg"),
-          title: "Wewenang Baru Megawati Usai Jokowi Teken Perpres Baru BRIN",
-          time: "2 jam yang lalu"
+    data() {
+        return {
+            show: false,
+            show2: false,
+            item: [],
+            itempopuler: [
+                {
+                src: require("../assets/JokoWi.jpg"),
+                title: "Joko Widodo",
+                rating: "13.231 kunjungan"
+                },
+                {
+                src: require("../assets/JokoWi.jpg"),
+                title: "Joko Widodo",
+                rating: "13.231 kunjungan"
+                },
+                {
+                src: require("../assets/JokoWi.jpg"),
+                title: "Joko Widodo",
+                rating: "13.231 kunjungan"
+                },
+                {
+                src: require("../assets/JokoWi.jpg"),
+                title: "Joko Widodo",
+                rating: "13.231 kunjungan"
+                },
+                {
+                src: require("../assets/JokoWi.jpg"),
+                title: "Joko Widodo",
+                rating: "13.231 kunjungan"
+                },
+            ]
+        };
+    },
+    async mounted() {
+        // this.getnews().then((data) => {
+        //     this.items = data.data
+        // })
+        this.item = this.$session.get('newsDa')
+        console.log(this.item)
+        window.scrollTo(0,0)
+    },
+    methods: {
+        async getnews() {
+        const data = await APIServices.news2()
+        .then((succ) => succ)
+        .catch((error) => error)
+        if (data.status === "ok") {
+            return data
+        } else {
+            return data
         }
-      ],
-      itempopuler: [
-        {
-          src: require("../assets/JokoWi.jpg"),
-          title: "Joko Widodo",
-          rating: "13.231 kunjungan"
-        },
-        {
-          src: require("../assets/JokoWi.jpg"),
-          title: "Joko Widodo",
-          rating: "13.231 kunjungan"
-        },
-        {
-          src: require("../assets/JokoWi.jpg"),
-          title: "Joko Widodo",
-          rating: "13.231 kunjungan"
-        },
-        {
-          src: require("../assets/JokoWi.jpg"),
-          title: "Joko Widodo",
-          rating: "13.231 kunjungan"
-        },
-        {
-          src: require("../assets/JokoWi.jpg"),
-          title: "Joko Widodo",
-          rating: "13.231 kunjungan"
-        },
-      ]
-    })
+        }
+    }
 }
 </script>

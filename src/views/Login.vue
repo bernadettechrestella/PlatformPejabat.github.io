@@ -113,7 +113,7 @@ export default {
         return {
             show: false,
             param: {
-                username: '',
+                email: '',
                 password: '',
             }
         }

@@ -68,7 +68,7 @@
                             class="white--text align-end"
                             height="315"
                             width="720"
-                            :src="item.image"
+                            :src="item.image.small"
                             @click="redirectDetailBerita(item)">
                         <v-card-title @click="redirectDetailBerita(item)" class="text-h4" v-text="item.title"></v-card-title>
                         <v-card-subtitle v-text="item.isoDate"></v-card-subtitle>
@@ -89,7 +89,7 @@
                                 class="white--text align-end"
                                 height="150"
                                 width="auto"
-                                :src="item.image"
+                                :src="item.image.small"
                                 @click="redirectDetailBerita(item)">
                             </v-img>
                         </v-col>
@@ -109,7 +109,7 @@
                             class="white--text align-end"
                             height="315"
                             width="720"
-                            :src="item.image"
+                            :src="item.image.small"
                             @click="redirectDetailBerita(item)">
                         <v-card-title @click="redirectDetailBerita(item)" class="text-h4" v-text="item.title"></v-card-title>
                         <v-card-subtitle v-text="item.isoDate"></v-card-subtitle>
@@ -130,7 +130,7 @@
                                 class="white--text align-end"
                                 height="150"
                                 width="auto"
-                                :src="item.image"
+                                :src="item.image.small"
                                 @click="redirectDetailBerita(item)">
                             </v-img>
                         </v-col>
@@ -157,7 +157,7 @@
                                 class="white--text align-end"
                                 height="150"
                                 width="auto"
-                                :src="item.image"
+                                :src="item.image.small"
                                 @click="redirectDetailBerita(item)">
                             </v-img>
                         </v-col>

@@ -124,15 +124,32 @@ export default {
             console.log(data)
             if (data.code === 1) {
                 var session = {
-                    email: data.email,
-                    password: data.password,
+                    email: data.body.email,
+                    password: data.body.password,
+                    name: data.body.name,
+                    username: data.body.username,
                 }
-                this.$session.start()
-                this.$session.set('loginStat', true)
-                this.$session.set('dataUser', session)
-                this.$router.push('/')
+                this.$swal({
+                    icon: 'success',
+                    title: 'Success',
+                    text: data.message,
+                    type: 'success'
+                }).then((result) => {
+                    if (result.isConfirmed){
+                        this.$session.start()
+                        this.$session.set('loginStat', true)
+                        this.$session.set('dataUser', session)
+                        this.$router.push('/')
+                    }
+                })
             } else {
                 console.log(data)
+                this.$swal({
+                    icon: 'error',
+                    title: 'Error',
+                    text: data.message,
+                    type: 'error'
+                });
             }
             }
         }

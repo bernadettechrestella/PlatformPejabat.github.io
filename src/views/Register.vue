@@ -193,7 +193,7 @@ export default {
                     if (result.isConfirmed) {
                         this.$session.start()
                         this.$session.set('loginStat', true)
-                        this.$router.push('/')
+                        this.$router.push('/register')
                     }
                 })
             } else {

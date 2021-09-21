@@ -15,7 +15,7 @@
                 <!-- gambar berita -->
                 <v-img
                     :src="item.image"
-                    height="400"/>
+                    height="500"/>
                 <br />
                 <!-- isi berita -->
                 <p v-text="item.description"></p>
@@ -379,9 +379,6 @@ export default {
         };
     },
     async mounted() {
-        // this.getnews().then((data) => {
-        //     this.items = data.data
-        // })
         this.item = this.$session.get('newsDa')
         console.log(this.item)
         window.scrollTo(0,0)

@@ -15,7 +15,7 @@
             </v-toolbar-title>
 
             <v-toolbar-items class="hidden-xs-only">
-                <v-btn text color="red">Berita</v-btn>
+                <v-btn text color="red" to="/berita">Berita</v-btn>
                 <v-btn text color="red" to="/cariProfil">Cari Profil</v-btn>
                 <v-btn text color="red">Tentang Kami</v-btn>
             </v-toolbar-items>
@@ -49,22 +49,43 @@
                                 v-on="on"
                             ><span v-text="this.$session.get('namaUser')"></span></v-btn> -->
                             <v-avatar
-                                color="primary"
-                                size="50"
-                                class="d-flex spacing-around"
+                                color="red"
+                                size="45"
                                 v-bind="attrs"
                                 v-on="on"
-                            ></v-avatar>
+                            ><v-icon dark>
+                                mdi-account-circle
+                            </v-icon></v-avatar>
                         </template>
 
                         <v-list>
-                            <v-list-item>
-                                <v-btn
+                            <v-row align="center" justify="center" class="pt-5 pb-1">
+                                <v-avatar
+                                color="red"
+                                size="30"
+                                v-bind="attrs"
+                                v-on="on"
+                                ><v-icon dark>
+                                mdi-account-circle
+                                </v-icon></v-avatar>
+                            </v-row>
+                            <v-row align="center" justify="center">
+                                <a
                                     text
-                                    class="hidden-xs-only"
-                                    to="/profil"
-                                >Bambang</v-btn>
-                            </v-list-item>
+                                    v-text="item.name"
+                                    class="hidden-xs-only red--text"
+                                    to="/Profil"
+                                ></a>
+                            </v-row>
+                            <v-row align="center" justify="center">
+                                <a
+                                    text
+                                    v-text="item.username"
+                                    class="hidden-xs-only black--text"
+                                    to="/Profil"
+                                ></a>
+                            </v-row>
+                            <br />
                             <v-divider></v-divider>
                             <v-list-item>
                                 <v-btn
@@ -133,8 +154,21 @@
 </template>
 
 <script>
+// import {Services} from '../services/Services'
+// const APIServices = new Services()
+
 export default {
     name: "Header",
+    data (){
+        return {
+            item: [],
+        }
+    },
+    async mounted() {
+        this.item = this.$session.get('dataUser')
+        // console.log(this.item)
+        window.scrollTo(0,0)
+    },
     methods : {
         logout(){
             this.$session.destroy()

@@ -1,5 +1,13 @@
 <template>
   <div>
+    <v-card class="banner" outlined>
+      <v-row class="d-flex align-center justify-left mx-auto red--text pt-10 mt-10">
+      <h1 class="pt-15 mt-15 pl-10 ml-10">Kenali Calon Pilihanmu Sebelum Pilih!</h1>
+      </v-row>
+      <v-row class="d-flex align-center justify-left mx-auto black--text">
+      <h3 class="pt-5 pl-10 ml-10">Temukan informasi terlengkap terkait pejabat publik di seluruh Indonesia hanya di Wakilmu.id</h3>
+      </v-row>
+    </v-card>
     <v-row wrap class="d-flex align-start mb-6 spacing-playground pa-10">
       <v-col cols="12" sm="6" md="8"
         v-if="!viewMoreActivated"> <!-- col berita -->
@@ -157,3 +165,11 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+  .banner {
+      background: url('../assets/banner.png');
+      background-size: cover;
+      height: 500px;
+  }
+</style>

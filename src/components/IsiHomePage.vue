@@ -22,7 +22,7 @@
           <v-col cols="4"><!-- col gambar -->
             <v-img
               @click="redirectDetailBerita(item)"
-              :src="item.image"
+              :src="item.image.small"
               height="150"/>
           </v-col>
           <v-col cols="8" class="pl-2"> <!-- col judul berita -->
@@ -53,7 +53,7 @@
           <v-col cols="4"><!-- col gambar -->
             <router-link to="/detailBerita">
             <v-img
-             :src="item.image"
+             :src="item.image.small"
              @click="redirectDetailBerita(item)"
              height="150"/></router-link>
           </v-col>

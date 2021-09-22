@@ -34,9 +34,14 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/ProfilPejabat.vue')
   },
   {
-    path: '/detailBerita',
-    name: 'DetailBerita',
-    component: () => import(/* webpackChunkName: "about" */ '../views/DetailBerita.vue')
+    path: '/detailBeritaHomePage',
+    name: 'DetailBeritaHomePage',
+    component: () => import(/* webpackChunkName: "about" */ '../views/DetailBeritaHomePage.vue')
+  },
+  {
+    path: '/detailBeritaBeritaUtama',
+    name: 'DetailBeritaBeritaUtama',
+    component: () => import(/* webpackChunkName: "about" */ '../views/DetailBeritaBeritaUtama.vue')
   },
   {
     path: '/berita',

@@ -10,35 +10,35 @@
                         color="#BDBDBD"
                         outlined
                         rounded
-                        v-on:click="viewMore"
+                        @click="filterNews('pemilu')"
                     >Pemilu</v-btn>
                     <p>&emsp;</p>
                     <v-btn
                         color="#BDBDBD"
                         outlined
                         rounded
-                        v-on:click="viewMore"
+                        @click="filterNews('presiden')"
                     >Presiden</v-btn>
                     <p>&emsp;</p>
                     <v-btn
                         color="#BDBDBD"
                         outlined
                         rounded
-                        v-on:click="viewMore"
+                        @click="filterNews('gubernur')"
                     >Gubernur</v-btn>
                     <p>&emsp;</p>
                     <v-btn
                         color="#BDBDBD"
                         outlined
                         rounded
-                        v-on:click="viewMore"
+                        @click="filterNews('DPR')"
                     >DPR</v-btn>
                     <p>&emsp;</p>
                     <v-btn
                         color="#BDBDBD"
                         outlined
                         rounded
-                        v-on:click="viewMore"
+                        @click="filterNews('korupsi')"
                     >Korupsi</v-btn>
                 </v-row>
             </v-col>
@@ -68,10 +68,10 @@
                             class="white--text align-end"
                             height="315"
                             width="720"
-                            :src="item.image.small"
+                            :src="item.urlToImage"
                             @click="redirectDetailBerita(item)">
                         <v-card-title @click="redirectDetailBerita(item)" class="text-h4" v-text="item.title"></v-card-title>
-                        <v-card-subtitle v-text="item.isoDate"></v-card-subtitle>
+                        <v-card-subtitle v-text="item.publishedAt"></v-card-subtitle>
                         </v-img>
                     </v-card>
             </v-row>
@@ -89,13 +89,13 @@
                                 class="white--text align-end"
                                 height="150"
                                 width="auto"
-                                :src="item.image.small"
+                                :src="item.urlToImage"
                                 @click="redirectDetailBerita(item)">
                             </v-img>
                         </v-col>
                         <v-col>
                             <a class="font-weight-bold black--text text-h6" @click="redirectDetailBerita(item)" v-text="item.title"></a>
-                            <h5 class="font-weight-light" v-text="item.isoDate"></h5>
+                            <h5 class="font-weight-light" v-text="item.publishedAt"></h5>
                         </v-col>
                         </v-row>
                     </v-card>
@@ -109,10 +109,10 @@
                             class="white--text align-end"
                             height="315"
                             width="720"
-                            :src="item.image.small"
+                            :src="item.urlToImage"
                             @click="redirectDetailBerita(item)">
                         <v-card-title @click="redirectDetailBerita(item)" class="text-h4" v-text="item.title"></v-card-title>
-                        <v-card-subtitle v-text="item.isoDate"></v-card-subtitle>
+                        <v-card-subtitle v-text="item.publishedAt"></v-card-subtitle>
                         </v-img>
                     </v-card>
             </v-row>
@@ -130,13 +130,13 @@
                                 class="white--text align-end"
                                 height="150"
                                 width="auto"
-                                :src="item.image.small"
+                                :src="item.urlToImage"
                                 @click="redirectDetailBerita(item)">
                             </v-img>
                         </v-col>
                         <v-col>
                             <a class="font-weight-bold black--text text-h6" @click="redirectDetailBerita(item)" v-text="item.title"></a>
-                            <h5 class="font-weight-light" v-text="item.isoDate"></h5>
+                            <h5 class="font-weight-light" v-text="item.publishedAt"></h5>
                         </v-col>
                         </v-row>
                     </v-card>
@@ -157,13 +157,13 @@
                                 class="white--text align-end"
                                 height="150"
                                 width="auto"
-                                :src="item.image.small"
+                                :src="item.urlToImage"
                                 @click="redirectDetailBerita(item)">
                             </v-img>
                         </v-col>
                         <v-col>
                             <a class="font-weight-bold black--text text-h6" @click="redirectDetailBerita(item)" v-text="item.title"></a>
-                            <h5 class="font-weight-light" v-text="item.isoDate"></h5>
+                            <h5 class="font-weight-light" v-text="item.publishedAt"></h5>
                         </v-col>
                         </v-row>
                     </v-card>
@@ -176,7 +176,6 @@
 <script>
 import {Services} from '../services/Services'
 const APIServices = new Services()
-
 export default {
     name: "IsiBerita",
     data() {
@@ -186,24 +185,49 @@ export default {
     },
     async mounted() {
         this.getnews().then((data) => {
-            this.items = data.data
+            this.items = data
         })
         console.log(this.items)
     },
     methods: {
+        async filterNews(item){
+            const param = {
+                filter: item,
+                from: new Date(Date.now()-518400000).toJSON().slice(0,10),
+                to: new Date().toJSON().slice(0,10)
+            }
+            console.log(param)
+            const response = await APIServices.news(param)
+            .then((succ) => succ)
+            if (response.status === 'ok' && response.totalResults > 0) {
+                this.items = response.articles
+            } else {
+                this.getnews().then((data) => {
+                this.items = data.articles
+            })
+            }
+        },
         redirectDetailBerita(item){
             this.$session.start()
-            this.$session.set('newsDa', item)
-            this.$router.push('/DetailBerita')
+            this.$session.set('newsDaUtama', item)
+            this.$router.push('/DetailBeritaBeritaUtama')
         },
         async getnews() {
-            const data = await APIServices.news2()
+            const param = {
+                filter: 'politik',
+                from: new Date(Date.now()-518400000).toJSON().slice(0,10),
+                to: new Date().toJSON().slice(0,10)
+            }
+            console.log(param)
+            const data = await APIServices.news(param)
             .then((succ) => succ)
             .catch((error) => error)
+            console.log(data)
             if (data.status === "ok") {
-                return data
+                console.log(data.articles)
+                return data.articles
             } else {
-                return data
+                return data.articles
             }
         }
     }

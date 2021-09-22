@@ -2,20 +2,20 @@
     <div class="detailberita">
         <v-responsive :aspect-ratio="16/9">
             <Header />
-            <IsiDetailBerita />
+            <IsiDetailBeritaUtama />
         </v-responsive>
     </div>
 </template>
 
 <script>
 import Header from '@/components/Header.vue'
-import IsiDetailBerita from '@/components/IsiDetailBerita.vue'
+import IsiDetailBeritaUtama from '@/components/IsiDetailBeritaUtama.vue'
 
 export default {
-    name: 'DetailBerita',
+    name: 'DetailBeritaBeritaUtama',
     components: {
         Header,
-        IsiDetailBerita
+        IsiDetailBeritaUtama
     }
 }
 </script>

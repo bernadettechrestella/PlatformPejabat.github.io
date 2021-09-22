@@ -70,20 +70,18 @@
                                 </v-icon></v-avatar>
                             </v-row>
                             <v-row align="center" justify="center">
-                                <a
+                                <router-link to="/profil" tag="btn"><a
                                     text
                                     v-text="item.name"
                                     class="hidden-xs-only red--text"
-                                    to="/Profil"
-                                ></a>
+                                ></a></router-link>
                             </v-row>
                             <v-row align="center" justify="center">
-                                <a
+                                <router-link to="profil" tag="btn"><a
                                     text
                                     v-text="item.username"
                                     class="hidden-xs-only black--text"
-                                    to="/Profil"
-                                ></a>
+                                ></a></router-link>
                             </v-row>
                             <br />
                             <v-divider></v-divider>

@@ -219,7 +219,7 @@
                         mdi-whatsapp
                     </v-icon>
                 </v-btn>
-                <v-btn
+                <!-- <v-btn
                     class="mx-2"
                     fab
                     dark
@@ -229,7 +229,7 @@
                     <v-icon dark>
                         mdi-telegram
                     </v-icon>
-                </v-btn>
+                </v-btn> -->
                 <br />
                 <br />
                 <h3 class="red--text">Tokoh Terkait</h3>
@@ -343,7 +343,7 @@ import {Services} from '../services/Services'
 const APIServices = new Services()
 
 export default {
-    name: "IsiDetailBerita",
+    name: "IsiDetailBeritaRepublikaHomePage",
     data() {
         return {
             show: false,
@@ -385,7 +385,7 @@ export default {
     },
     methods: {
         async getnews() {
-        const data = await APIServices.news2()
+        const data = await APIServices.newsAntara()
         .then((succ) => succ)
         .catch((error) => error)
         if (data.status === "ok") {

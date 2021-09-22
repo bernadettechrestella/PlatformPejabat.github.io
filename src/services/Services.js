@@ -1,7 +1,7 @@
 import axios from 'axios';
-import {API_URL_AUTH} from '../configs/GlobalURL'
+import {API_URL_AUTH, API_URL_NEWS_REPUBLIKA} from '../configs/GlobalURL'
 import {API_URL_NEWS} from '../configs/GlobalURL'
-import {API_URL_NEWS2} from '../configs/GlobalURL'
+import {API_URL_NEWS_ANTARA} from '../configs/GlobalURL'
 
 const options = {
     headers: {
@@ -9,12 +9,6 @@ const options = {
         'Access-Control-Allow-Origin': '*'
     }
 }
-// const optionsGet = {
-//     headers: {
-//         'Content-Type': 'application/json',
-//         'Access-Control-Allow-Origin': 'GET'
-//     }
-// }
 
 export class Services {
     async register(param) {
@@ -29,14 +23,20 @@ export class Services {
         console.log(data)
         return data
     }
-    async news() {
-        const url = `${API_URL_NEWS}`
+    async news(param) {
+        const url = `${API_URL_NEWS}everything?domains=viva.co.id&q=${param.filter}&from=${param.from}&to=${param.to}&sortBy=popularity&apiKey=f6b37ebf032b442cb81d45842aaac861`
         const data = axios.get(url).then(response => response.data)
         // console.log(data)
         return data
     }
-    async news2() {
-        const url = `${API_URL_NEWS2}`
+    async newsRepublika(param) {
+        const url = `${API_URL_NEWS_REPUBLIKA}`+param
+        const data = axios.get(url).then(response => response.data)
+        // console.log(data)
+        return data
+    }
+    async newsAntara() {
+        const url = `${API_URL_NEWS_ANTARA}`
         const data = axios.get(url).then(response => response.data)
         // console.log(data)
         return data

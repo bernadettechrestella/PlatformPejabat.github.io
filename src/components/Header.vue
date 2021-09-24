@@ -17,7 +17,7 @@
             <v-toolbar-items class="hidden-xs-only">
                 <v-btn text color="red" to="/berita">Berita</v-btn>
                 <v-btn text color="red" to="/cariProfil">Cari Profil</v-btn>
-                <v-btn text color="red" to="/tetangKami">Tentang Kami</v-btn>
+                <v-btn text color="red" to="/tentangKami">Tentang Kami</v-btn>
             </v-toolbar-items>
 
             <v-spacer></v-spacer>

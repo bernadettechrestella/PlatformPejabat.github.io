@@ -1,8 +1,8 @@
 <template>
-    <div class="detailberita">
+    <div class="tentangKami">
         <v-responsive :aspect-ratio="16/9">
             <Header />
-            <IsiDetailBeritaKategori />
+            <IsiTentangKami />
             <Footer />
         </v-responsive>
     </div>
@@ -11,13 +11,13 @@
 <script>
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
-import IsiDetailBeritaKategori from '@/components/isiDetailBeritaKategori.vue'
+import IsiTentangKami from '@/components/IsiTentangKami.vue'
 
 export default {
-    name: 'DetailBeritaKategori',
+    name: 'TentangKami',
     components: {
         Header,
-        IsiDetailBeritaKategori,
+        IsiTentangKami,
         Footer
     }
 }

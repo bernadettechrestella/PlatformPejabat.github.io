@@ -73,6 +73,11 @@ const routes = [
     name: 'GantiPassword',
     component: () => import(/* webpackChunkName: "about" */ '../views/GantiPassword.vue')
   },
+  {
+    path: '/tentangKami',
+    name: 'TetangKami',
+    component: () => import(/* webpackChunkName: "about" */ '../views/TentangKami.vue')
+  },
 ]
 
 const router = new VueRouter({

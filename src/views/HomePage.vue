@@ -4,12 +4,14 @@
             <Header />
             <!-- <BannerUtama /> -->
             <IsiHomePage />
+            <Footer />
         </v-responsive>
     </div>
 </template>
 
 <script>
 import Header from '@/components/Header.vue'
+import Footer from '@/components/Footer.vue'
 // import BannerUtama from '@/components/BannerUtama.vue'
 import IsiHomePage from '@/components/IsiHomePage.vue'
 
@@ -19,6 +21,7 @@ export default {
         Header,
         // BannerUtama,
         IsiHomePage,
+        Footer
     }
 }
 </script>

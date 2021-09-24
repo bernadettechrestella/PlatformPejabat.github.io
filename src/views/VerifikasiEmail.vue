@@ -3,12 +3,14 @@
         <v-responsive :aspect-ratio="16/9">
             <Header />
             <IsiVerifikasiEmail />
+            <Footer />
         </v-responsive>
     </div>
 </template>
 
 <script>
 import Header from '@/components/Header.vue'
+import Footer from '@/components/Footer.vue'
 import IsiVerifikasiEmail from '@/components/IsiVerifikasiEmail.vue'
 
 export default {
@@ -16,6 +18,7 @@ export default {
     components: {
         Header,
         IsiVerifikasiEmail,
+        Footer
     }
 }
 </script>

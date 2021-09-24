@@ -148,6 +148,6 @@
 
 <script>
 export default {
-    name: "IsiTentangKami",
+    name: "IsiTentangKami"
 }
 </script>

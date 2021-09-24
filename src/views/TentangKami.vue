@@ -1,5 +1,5 @@
 <template>
-    <div class="tentangKami">
+    <div class="tentangkami">
         <v-responsive :aspect-ratio="16/9">
             <Header />
             <IsiTentangKami />
@@ -11,7 +11,7 @@
 <script>
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
-import IsiTentangKami from '@/components/IsiTetangKami.vue'
+import IsiTentangKami from '@/components/IsiTentangKami.vue'
 
 export default {
     name: 'TentangKami',

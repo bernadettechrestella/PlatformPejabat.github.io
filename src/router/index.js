@@ -75,7 +75,7 @@ const routes = [
   },
   {
     path: '/tentangKami',
-    name: 'TetangKami',
+    name: 'TentangKami',
     component: () => import(/* webpackChunkName: "about" */ '../views/TentangKami.vue')
   },
 ]

@@ -5,7 +5,7 @@
         <v-row wrap class="d-flex align-start mb-6 spacing-playground pl-10 pr-10 pt-5">
             <v-col cols="12" sm="6" md="8"> <!-- kolom kiri -->
                 <h1 class="font-weight-bold" v-text="item.title"></h1> <!-- Judul berita -->
-                <h5 class="font-weight-light" v-text="item.publishedAt"></h5> <!-- tanggal berita -->
+                <h5 class="font-weight-light">{{ item.publishedAt | moment("DD MMMM YYYY, HH:mm") }}</h5> <!-- tanggal berita -->
             </v-col>
             <v-col cols="6" md="4"> <!-- kolom kanan -->
             </v-col>
@@ -21,7 +21,7 @@
                 <p v-text="item.content"></p>
                 <v-row align="end" justify="end">
                 <!-- link berita -->
-                <v-btn class="red--text" text :href="item.url">Berita Selengkapnya...</v-btn>
+                <v-btn class="red--text" text @click="beritaAsli(item.url)">Berita Selengkapnya...</v-btn>
                 </v-row>
                 <!--komentar -->
                 <h3 class="red--text">Komentar</h3>
@@ -230,9 +230,9 @@
                         mdi-telegram
                     </v-icon>
                 </v-btn> -->
-                <br />
-                <br />
-                <h3 class="red--text">Tokoh Terkait</h3>
+                <!-- <br />
+                <br /> -->
+                <!-- <h3 class="red--text">Tokoh Terkait</h3>
                 <v-divider style="background-color:red; height: 20px; width:28%;"></v-divider>
                 <v-divider style="background-color:red; height: 5px; width:100%;"></v-divider>
                 <br />
@@ -290,10 +290,10 @@
                     </v-row>
                     </v-card>
                 </v-sheet>
-                <br />
-                <h3 class="red--text">Berita Terkait</h3>
+                <br /> -->
+                <!-- <h3 class="red--text">Berita Terkait</h3>
                 <v-divider style="background-color:red; height: 20px; width:28%;"></v-divider>
-                <v-divider style="background-color:red; height: 5px; width:100%;"></v-divider>
+                <v-divider style="background-color:red; height: 5px; width:100%;"></v-divider> -->
                 <v-col cols="12"> 
                     <v-row align="center"
                     v-for="(item,i) in items"
@@ -310,7 +310,7 @@
                     </v-row>
                     <br />
                 </v-col>
-                <br />
+                <!-- <br /> -->
                 <h3 class="red--text">Profil Teratas</h3>
                 <v-divider style="background-color:red; height: 20px; width:28%;"></v-divider>
                 <v-divider style="background-color:red; height: 5px; width:100%;"></v-divider>
@@ -324,11 +324,12 @@
                 <v-col cols="3"> <!-- col foto profil -->
                     <v-img
                     :src="item.src"
-                    contain
-                    height="100"/>
+                    height="125"
+                    width="90"
+                    v-on:click="redirectProfilPejabat(item)"/>
                 </v-col>
-                <v-col cols="6" class="pl-2"> <!-- col nama profil -->
-                    <h3 class="font-weight-bold" v-text="item.title"></h3>
+                <v-col cols="8"> <!-- col nama profil -->
+                    <a v-on:click="redirectProfilPejabat(item)" class="font-weight-bold black--text text-h6" v-text="item.title"></a>
                     <h5 class="font-weight-light" v-text="item.rating"></h5>
                 </v-col>
                 </v-row>
@@ -352,28 +353,112 @@ export default {
             itempopuler: [
                 {
                 src: require("../assets/JokoWi.jpg"),
-                title: "Joko Widodo",
-                rating: "13.231 kunjungan"
+                title: "Ir. H. Joko Widodo",
+                rating: "231.231 kunjungan",
+                ttl: "Surakarta, 21 Juni 1961",
+                daerah: "DKI Jakarta",
+                mejabat: "Presiden",
+                mencalonkan: "-",
+                fraksi: "PDIP",
+                agama: "Islam",
+                pendidikan: [
+                    {
+                    data: "SDN 112 Tirtoyoso",
+                    periode: "1973",
+                    },
+                    {
+                    data: "SMPN 1 Surakarta",
+                    periode: "1976"
+                    },
+                    {
+                    data: "SMAN 1 Surakarta",
+                    periode: "1980"
+                    },
+                    {
+                    data: "S1 Kehutanan",
+                    periode: "Fakultas Kehutanan (UGM)"
+                    }
+                ],
+                pengalaman: [
+                    {
+                    data: "Wali Kota Surakarta",
+                    periode: "28 Juli 2005 – 1 Oktober 2012",
+                    },
+                    {
+                    data: "Gubernur DKI Jakarta",
+                    periode: "15 Oktober 2012"
+                    },
+                    {
+                    data: "Presiden Indonesia",
+                    periode: "2014 - 2019"
+                    },
+                    {
+                    data: "Presiden Indonesia",
+                    periode: "2019 - 2024"
+                    }
+                ],
+                prestasi: [],
+                biografi: "Ir. H. Joko Widodo adalah Presiden ke-7 Republik Indonesia yang mulai menjabat sejak 20 Oktober 2014. Lahir di Surakarta, Jawa Tengah, pada 21 Juni 1961, Joko Widodo pertama kali terjun ke pemerintahan sebagai Wali Kota Surakarta (Solo) pada 28 Juli 2005 hingga 1 Oktober 2012 Selepas itu, Joko Widodo menjabat sebagai Gubernur DKI Jakarta pada 15 Oktober 2012 sebelum terpilih sebagai Presiden Republik Indonesia pada Pemilihan Presiden (Pilpres) 2014. Saat Pilpres tersebut Joko Widodo terpilih bersama pasangannya, Jusuf Kalla. Dalam Pilpres 2019, Joko Widodo kembali terpilih sebagai Presiden Republik Indonesia untuk masa jabatannya yang kedua. Kali ini, Joko Widodo didampingi oleh Wakil Presiden K.H. Ma’ruf Amin dan dilantik pada 20 Oktober 2019 untuk masa jabatan 2019 hingga 2024 mendatang. Pembangunan infrastruktur menjadi program prioritas di masa kepemimpinannya yang pertama. Pembangunan yang dilakukan secara merata hingga ke daerah terluar Indonesia ini dilakukan untuk mengejar ketertinggalan Indonesia dalam sektor ini dibandingkan negara-negara lain. Program prioritas tersebut dibarengi dengan program berupa bantuan sosial seperti Kartu Indonesia Pintar (KIP), Kartu Indonesia Sehat (KIS), hingga Program Keluarga Harapan (PKH). Selain itu, sejak awal masa jabatannya, Joko Widodo juga mengupayakan reforma agraria dengan salah satunya melakukan percepatan penerbitan sertifikat hak atas tanah untuk mengurangi terjadinya sengketa lahan oleh karena ketiadaan sertifikat. Di masa jabatannya yang kedua, Joko Widodo mengalihkan fokus pemerintahan pada pembangunan dan peningkatan kapasitas sumber daya manusia Indonesia untuk dapat bersaing dengan negara-negara lainnya. Adapun program pembangunan infrastruktur masih terus dilanjutkan bersamaan dengan itu.",
                 },
                 {
-                src: require("../assets/JokoWi.jpg"),
-                title: "Joko Widodo",
-                rating: "13.231 kunjungan"
+                src: require("../assets/irmawan.jpg"),
+                title: "H. Irmawan, S.Sos., M.M.",
+                rating: "131.231 kunjungan",
+                ttl: "Aceh Tenggara / 21 Desember 1967",
+                daerah: "-",
+                mejabat: "-",
+                mencalonkan: "-",
+                fraksi: "-",
+                agama: "-",
+                pendidikan: [],
+                pengalaman: [],
+                prestasi: [],
+                biografi: "-",
                 },
                 {
-                src: require("../assets/JokoWi.jpg"),
-                title: "Joko Widodo",
-                rating: "13.231 kunjungan"
+                src: require("../assets/kadafi.jpg"),
+                title: "Dr. H. Muhammad Kadafi, S.H., M.H.",
+                rating: "100.231 kunjungan",
+                ttl: "Banda Aceh, 08 Oktober 1983",
+                daerah: "-",
+                mejabat: "-",
+                mencalonkan: "-",
+                fraksi: "-",
+                agama: "-",
+                pendidikan: [],
+                pengalaman: [],
+                prestasi: [],
+                biografi: "-",
                 },
                 {
-                src: require("../assets/JokoWi.jpg"),
-                title: "Joko Widodo",
-                rating: "13.231 kunjungan"
+                src: require("../assets/sofyan.jpg"),
+                title: "Sofyan Ali, S.Ag., S.H., M.Pd.",
+                rating: "80.231 kunjungan",
+                ttl: "Kota Jambi, 20 Oktober 1973",
+                daerah: "-",
+                mejabat: "-",
+                mencalonkan: "-",
+                fraksi: "-",
+                agama: "-",
+                pendidikan: [],
+                pengalaman: [],
+                prestasi: [],
+                biografi: "-",
                 },
                 {
-                src: require("../assets/JokoWi.jpg"),
-                title: "Joko Widodo",
-                rating: "13.231 kunjungan"
+                src: require("../assets/eem.jpg"),
+                title: "Neng Eem Marhamah Zulfa Hiz., M.M.",
+                rating: "13.231 kunjungan",
+                ttl: "Cianjur, 08 Mei 1979",
+                daerah: "-",
+                mejabat: "-",
+                mencalonkan: "-",
+                fraksi: "-",
+                agama: "-",
+                pendidikan: [],
+                pengalaman: [],
+                prestasi: [],
+                biografi: "-",
                 },
             ]
         };
@@ -383,17 +468,10 @@ export default {
         console.log(this.item)
         window.scrollTo(0,0)
     },
-    // methods: {
-    //     async getnews() {
-    //     const data = await APIServices.news2()
-    //     .then((succ) => succ)
-    //     .catch((error) => error)
-    //     if (data.status === "ok") {
-    //         return data
-    //     } else {
-    //         return data
-    //     }
-    //     }
-    // }
+    methods: {
+        beritaAsli(urlBerita){
+            window.open(urlBerita, "_blank"); 
+        }
+    }
 }
 </script>

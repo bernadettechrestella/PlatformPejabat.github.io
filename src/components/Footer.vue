@@ -21,18 +21,18 @@
             <v-col cols="2">
                 <h3 class="red--text">Menu</h3>
                 
-                <p><a href="#" class="text-decoration-none black--text">
+                <router-link to="/" tag="btn"><p><a href="#" class="text-decoration-none black--text">
                     Home
-                </a></p>
-                <p><a href="#" class="text-decoration-none black--text">
+                </a></p></router-link>
+                <router-link to="/berita" tag="btn"><p><a href="#" class="text-decoration-none black--text">
                     Berita
-                </a></p>
-                <p><a href="#" class="text-decoration-none black--text">
+                </a></p></router-link>
+                <router-link to="/cariProfil" tag="btn"><p><a href="#" class="text-decoration-none black--text">
                     Cari Profil
-                </a></p>
-                <p><a href="#" class="text-decoration-none black--text">
+                </a></p></router-link>
+                <router-link to="/tentangKami" tag="btn"><p><a href="#" class="text-decoration-none black--text">
                     Tentang Kami
-                </a></p>
+                </a></p></router-link>
             </v-col>
 
             <v-col cols="5">

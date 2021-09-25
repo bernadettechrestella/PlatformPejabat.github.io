@@ -71,7 +71,8 @@
                             :src="item.urlToImage"
                             @click="redirectDetailBerita(item)">
                         <v-card-title @click="redirectDetailBerita(item)" class="text-h4" v-text="item.title"></v-card-title>
-                        <v-card-subtitle v-text="item.publishedAt"></v-card-subtitle>
+                        <v-card-subtitle>{{ item.publishedAt | moment("DD MMMM YYYY, HH:mm") }}</v-card-subtitle>
+                        <!-- <h5 class="font-weight-light">{{ item.isoDate | moment("DD MMMM YYYY, h:mm") }}</h5> -->
                         </v-img>
                     </v-card>
             </v-row>
@@ -95,7 +96,7 @@
                         </v-col>
                         <v-col>
                             <a class="font-weight-bold black--text text-h6" @click="redirectDetailBerita(item)" v-text="item.title"></a>
-                            <h5 class="font-weight-light" v-text="item.publishedAt"></h5>
+                            <h5 class="font-weight-light">{{ item.publishedAt | moment("DD MMMM YYYY, HH:mm") }}</h5>
                         </v-col>
                         </v-row>
                     </v-card>
@@ -112,7 +113,7 @@
                             :src="item.urlToImage"
                             @click="redirectDetailBerita(item)">
                         <v-card-title @click="redirectDetailBerita(item)" class="text-h4" v-text="item.title"></v-card-title>
-                        <v-card-subtitle v-text="item.publishedAt"></v-card-subtitle>
+                        <v-card-subtitle>{{ item.publishedAt | moment("DD MMMM YYYY, HH:mm") }}</v-card-subtitle>
                         </v-img>
                     </v-card>
             </v-row>
@@ -136,7 +137,7 @@
                         </v-col>
                         <v-col>
                             <a class="font-weight-bold black--text text-h6" @click="redirectDetailBerita(item)" v-text="item.title"></a>
-                            <h5 class="font-weight-light" v-text="item.publishedAt"></h5>
+                            <h5 class="font-weight-light">{{ item.publishedAt | moment("DD MMMM YYYY, HH:mm") }}</h5>
                         </v-col>
                         </v-row>
                     </v-card>
@@ -163,7 +164,7 @@
                         </v-col>
                         <v-col>
                             <a class="font-weight-bold black--text text-h6" @click="redirectDetailBerita(item)" v-text="item.title"></a>
-                            <h5 class="font-weight-light" v-text="item.publishedAt"></h5>
+                            <h5 class="font-weight-light">{{ item.publishedAt | moment("DD MMMM YYYY, HH:mm") }}</h5>
                         </v-col>
                         </v-row>
                     </v-card>

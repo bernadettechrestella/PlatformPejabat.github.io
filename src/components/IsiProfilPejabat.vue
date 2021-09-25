@@ -7,7 +7,7 @@
                 <v-col>
                     <v-row>
                         <v-col>
-                            <h1 class="red--text ml-3">Joko Widodo</h1>
+                            <h1 class="red--text ml-3" v-text="item.title"></h1>
                         </v-col>
                     </v-row>
 
@@ -15,7 +15,7 @@
                         <v-col>
                             <v-col>
                                 <v-img
-                                :src="require('../assets/JokoWi.jpg')"
+                                :src="item.src"
                                 height="300"
                                 width="210"
                                 class="mt-1"
@@ -35,18 +35,19 @@
                     
                         <v-col>
                             <b>
-                            <v-col>Nama lengkap</v-col>
-                            <v-col>Tempat & Tanggal Lahir</v-col>
-                            <v-col>Daerah Pilihan</v-col>
-                            <v-col>Menjabat sebagai</v-col>
-                            <v-col>Mencalonkan sebagai</v-col>
-                            <v-col>Fraksi</v-col>
-                            <v-col>Agama</v-col>
+                            <v-col v-text="item.title"></v-col>
+                            <v-col v-text="item.ttl"></v-col>
+                            <v-col v-text="item.daerah"></v-col>
+                            <v-col v-text="item.mejabat"></v-col>
+                            <v-col v-text="item.mencalonkan"></v-col>
+                            <v-col v-text="item.fraksi"></v-col>
+                            <v-col v-text="item.agama"></v-col>
                             </b>
                         </v-col>
                     
                         <v-col class="ml-16">
                             <v-col>
+                                <v-row align="center">
                                 <v-icon 
                                 dark
                                 fab
@@ -54,9 +55,12 @@
                                 color="red">
                                     mdi-twitter
                                 </v-icon>
-                                &ensp;@jokowidodo
+                                <p>&emsp;</p>
+                                <h4 v-text="item.twitter"></h4>
+                                </v-row>
                             </v-col>
                             <v-col>
+                                <v-row align="center">
                                 <v-icon 
                                 dark
                                 fab
@@ -64,9 +68,12 @@
                                 color="red">
                                     mdi-facebook
                                 </v-icon>
-                                &ensp;Joko Widodo
+                                <p>&emsp;</p>
+                                <h4 v-text="item.fb"></h4>
+                                </v-row>
                             </v-col>
                             <v-col>
+                                <v-row align="center">
                                 <v-icon 
                                 dark
                                 fab
@@ -74,7 +81,9 @@
                                 color="red">
                                     mdi-instagram
                                 </v-icon>
-                                &ensp;joko_widodo
+                                <p>&emsp;</p>
+                                <h4 v-text="item.ig"></h4>
+                                </v-row>
                             </v-col>
                         </v-col>
                     </v-row>
@@ -87,21 +96,15 @@
                             outlined>
                                 <v-col class="d-flex red white--text align-center justify-center">Pendidikan</v-col>
                                 <v-col>
-                                    <h4 class="red--text">Universitas Indonesia</h4>
-                                    <h5 class="text--primary">Magister Ilmu Politik</h5>
-                                    <h6 class="text--secondary">2013</h6>
-                                    
-                                    <v-divider class="mt-3"></v-divider>
-
-                                    <h4 class="red--text mt-3">Universitas Indonesia</h4>
-                                    <h5 class="text--primary">Magister Ilmu Politik</h5>
-                                    <h6 class="text--secondary">2013</h6>
-                                    
-                                    <v-divider class="mt-3"></v-divider>
-
-                                    <h4 class="red--text mt-3">Universitas Indonesia</h4>
-                                    <h5 class="text--primary">Magister Ilmu Politik</h5>
-                                    <h6 class="text--secondary">2013</h6>
+                                    <v-row
+                                        v-for="(data,i) in item.pendidikan"
+                                        :key="i">
+                                        <v-col>
+                                            <h4 class="red--text" v-text="data.data"></h4>
+                                            <h5 class="text--secondary" v-text="data.periode"></h5>
+                                            <v-divider class="mt-3"></v-divider>
+                                        </v-col>
+                                    </v-row>
                                 </v-col>
                             </v-card>
                         </v-col>
@@ -113,18 +116,15 @@
                             outlined>
                                 <v-col class="d-flex red white--text align-center justify-center">Pengalaman</v-col>
                                 <v-col>
-                                    <h4 class="red--text">Gubernur</h4>
-                                    <h6 class="text--secondary">2013-sekarang</h6>
-                                    
-                                    <v-divider class="mt-3"></v-divider>
-
-                                    <h4 class="red--text mt-3">Anggota DPR</h4>
-                                    <h6 class="text--secondary">2007</h6>
-                                    
-                                    <v-divider class="mt-3"></v-divider>
-
-                                    <h4 class="red--text mt-3">Konsultan</h4>
-                                    <h6 class="text--secondary">2001</h6>
+                                    <v-row
+                                        v-for="(data,i) in item.pengalaman"
+                                        :key="i">
+                                        <v-col>
+                                            <h4 class="red--text" v-text="data.data"></h4>
+                                            <h5 class="text--secondary" v-text="data.periode"></h5>
+                                            <v-divider class="mt-3"></v-divider>
+                                        </v-col>
+                                    </v-row>
                                 </v-col>
                             </v-card>
                         </v-col>
@@ -136,21 +136,15 @@
                             outlined>
                                 <v-col class="d-flex red white--text align-center justify-center">Prestasi</v-col>
                                 <v-col>
-                                    <h4 class="red--text">Tokoh Penggerak Program Inklusi</h4>
-                                    <h5 class="text--primary">Otoritas Jasa Keuangan</h5>
-                                    <h6 class="text--secondary">2021</h6>
-                                    
-                                    <v-divider class="mt-3"></v-divider>
-
-                                    <h4 class="red--text mt-3">Tokoh Penggerak Program Inklusi</h4>
-                                    <h5 class="text--primary">Otoritas Jasa Keuangan</h5>
-                                    <h6 class="text--secondary">2021</h6>
-                                    
-                                    <v-divider class="mt-3"></v-divider>
-
-                                    <h4 class="red--text mt-3">Tokoh Penggerak Program Inklusi</h4>
-                                    <h5 class="text--primary">Otoritas Jasa Keuangan</h5>
-                                    <h6 class="text--secondary">2021</h6>
+                                    <v-row
+                                        v-for="(data,i) in item.prestasi"
+                                        :key="i">
+                                        <v-col>
+                                            <h4 class="red--text" v-text="data.data"></h4>
+                                            <h5 class="text--secondary" v-text="data.periode"></h5>
+                                            <v-divider class="mt-3"></v-divider>
+                                        </v-col>
+                                    </v-row>
                                 </v-col>
                             </v-card>
                         </v-col>
@@ -162,20 +156,7 @@
                             <v-divider style="background-color:red; height: 20px; width:5%;"></v-divider>
                             <v-divider style="background-color:red; height: 5px; width:100%;"></v-divider>
 
-                            <v-col>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-                                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat 
-                                nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id 
-                                est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-                                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat 
-                                nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id 
-                                est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-                                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat 
-                                nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id 
-                                est laborum.
+                            <v-col v-text="item.biografi">
                             </v-col>
                         </v-col>
                         
@@ -188,7 +169,7 @@
                             <v-divider style="background-color:red; height: 20px; width:8%;"></v-divider>
                             <v-divider style="background-color:red; height: 5px; width:100%;"></v-divider>
 
-                            <v-col>
+                            <v-col> <!-- ini kolom slidernya -->
                                 <v-sheet
                                 class="mx-auto"
                                 max-width="1275"
@@ -200,31 +181,32 @@
                                     show-arrows
                                     >
                                         <v-slide-item
-                                        v-for="n in 15"
-                                        :key="n"
-                                        v-slot="{ active, toggle }"
+                                        v-for="(berita, i) in items"
+                                        :key="i"
+                                        v-slot="{ active}"
                                         >
-                                            <v-card
-                                            :color="active ? undefined : 'grey lighten-1'"
+
+                                        <v-card
                                             class="ma-4"
                                             height="300"
                                             width="250"
-                                            @click="toggle"
+                                            
+                                            :color="active ? undefined : 'white'"
                                             >
-                                                <v-row
-                                                align="center"
-                                                justify="center"
-                                                >
-                                                    <v-scale-transition>
-                                                        <v-icon
-                                                        v-if="active"
-                                                        color="white"
-                                                        size="48"
-                                                        v-text="'mdi-close-circle-outline'"
-                                                        ></v-icon>
-                                                    </v-scale-transition>
+                                                <v-row>
+                                                    <v-img
+                                                        :src="berita.urlToImage"
+                                                        max-width="250"
+                                                        class="ml-3"
+                                                        @click="redirectDetailBerita(berita)"></v-img>
                                                 </v-row>
-                                            </v-card>
+                                                <v-row>
+                                                    <a class="font-weight-bold black--text text-h6 pl-4 pr-4" v-text="berita.title" @click="redirectDetailBerita(berita)"></a>
+                                                </v-row>
+                                                <v-row>    
+                                                    <v-card-subtitle>{{ berita.publishedAt | moment("DD MMMM YYYY, HH:mm") }}</v-card-subtitle>
+                                                </v-row>
+                                        </v-card>
                                         </v-slide-item>
                                     </v-slide-group>
                                 </v-sheet>
@@ -435,7 +417,49 @@
 </template>
 
 <script>
+import {Services} from '../services/Services'
+const APIServices = new Services()
+
 export default {
-    name: "IsiProfilPejabat"
+    name: "IsiProfilPejabat",
+    data() {
+        return {
+            item: [],
+            items: [],
+        }
+    },
+    async mounted() {
+        this.item = this.$session.get('dataPejabat')
+        console.log(this.item)
+        this.getnews().then((data) => {
+            this.items = data
+        })
+        window.scrollTo(0,0)
+    },
+    methods: {
+        redirectDetailBerita(item){
+                this.$session.start()
+                this.$session.set('newsDaUtama', item)
+                this.$router.push('/DetailBeritaBeritaUtama')
+        },
+        async getnews() {
+            const param = {
+                filter: this.item.panggilan,
+                from: new Date(Date.now()-518400000).toJSON().slice(0,10),
+                to: new Date().toJSON().slice(0,10)
+            }
+            console.log(param)
+            const data = await APIServices.news(param)
+            .then((succ) => succ)
+            .catch((error) => error)
+            console.log(data)
+            if (data.status === "ok") {
+                console.log(data.articles)
+                return data.articles
+            } else {
+                return data.articles
+            }
+        },
+    }
 }
 </script>

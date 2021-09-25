@@ -2,7 +2,6 @@
     <div>
         <v-divider style="background-color:#EEEEEE; height: 20px; width:100%;"></v-divider>
         <v-divider style="background-color:#EEEEEE; height: 20px; width:100%;"></v-divider>
-        <br />
         <v-card
         class="banner_cari"
         >

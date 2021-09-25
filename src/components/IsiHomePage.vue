@@ -28,7 +28,8 @@
           <v-col cols="8" class="pl-2"> <!-- col judul berita -->
             <!-- <router-link style="text-decoration: none; color: black;" to="/detailBerita"><h3 class="font-weight-bold" v-text="item.title"></h3></router-link> -->
             <a @click="redirectDetailBerita(item)" class="font-weight-bold black--text text-h6" v-text="item.title"></a>
-            <h5 class="font-weight-light" v-text="item.isoDate"></h5>
+            <!-- <h5 class="font-weight-light" v-text="item.isoDate"></h5> -->
+            <h5 class="font-weight-light">{{ item.isoDate | moment("DD MMMM YYYY, HH:mm") }}</h5>
           </v-col>
         </v-row>
         <br />
@@ -59,7 +60,7 @@
           </v-col>
           <v-col cols="8" class="pl-2"> <!-- col judul berita -->
             <a @click="redirectDetailBerita(item)" class="font-weight-bold black--text text-h6" v-text="item.title"></a>
-            <h5 class="font-weight-light" v-text="item.isoDate"></h5>
+            <h5 class="font-weight-light">{{ item.isoDate | moment("DD MMMM YYYY, HH:mm") }}</h5>
           </v-col>
         </v-row>
         <br />
@@ -79,12 +80,12 @@
           <v-col cols="3"> <!-- col foto profil -->
             <v-img
               :src="item.src"
-              contain
-              height="100"
-              v-on:click="redirect"/>
+              height="125"
+              width="90"
+              v-on:click="redirectProfilPejabat(item)"/>
           </v-col>
-          <v-col cols="6" class="pl-2"> <!-- col nama profil -->
-            <router-link to="/profilPejabat" style="text-decoration: none; color: black;"><h3 class="font-weight-bold" v-text="item.title"></h3></router-link>
+          <v-col cols="8"> <!-- col nama profil -->
+            <a v-on:click="redirectProfilPejabat(item)" class="font-weight-bold black--text text-h6" v-text="item.title"></a>
             <h5 class="font-weight-light" v-text="item.rating"></h5>
           </v-col>
         </v-row>
@@ -108,28 +109,132 @@ export default {
       itempopuler: [
         {
           src: require("../assets/JokoWi.jpg"),
-          title: "Joko Widodo",
-          rating: "13.231 kunjungan"
+          title: "Ir. H. Joko Widodo",
+          panggilan: "jokowi",
+          rating: "231.231 kunjungan",
+          ttl: "Surakarta, 21 Juni 1961",
+          daerah: "DKI Jakarta",
+          mejabat: "Presiden",
+          mencalonkan: "-",
+          fraksi: "PDIP",
+          agama: "Islam",
+          pendidikan: [
+            {
+              data: "SDN 112 Tirtoyoso",
+              periode: "1973",
+            },
+            {
+              data: "SMPN 1 Surakarta",
+              periode: "1976"
+            },
+            {
+              data: "SMAN 1 Surakarta",
+              periode: "1980"
+            },
+            {
+              data: "S1 Kehutanan",
+              periode: "Fakultas Kehutanan (UGM)"
+            }
+          ],
+          pengalaman: [
+            {
+              data: "Wali Kota Surakarta",
+              periode: "28 Juli 2005 – 1 Oktober 2012",
+            },
+            {
+              data: "Gubernur DKI Jakarta",
+              periode: "15 Oktober 2012"
+            },
+            {
+              data: "Presiden Indonesia",
+              periode: "2014 - 2019"
+            },
+            {
+              data: "Presiden Indonesia",
+              periode: "2019 - 2024"
+            }
+          ],
+          prestasi: [],
+          biografi: "Ir. H. Joko Widodo adalah Presiden ke-7 Republik Indonesia yang mulai menjabat sejak 20 Oktober 2014. Lahir di Surakarta, Jawa Tengah, pada 21 Juni 1961, Joko Widodo pertama kali terjun ke pemerintahan sebagai Wali Kota Surakarta (Solo) pada 28 Juli 2005 hingga 1 Oktober 2012 Selepas itu, Joko Widodo menjabat sebagai Gubernur DKI Jakarta pada 15 Oktober 2012 sebelum terpilih sebagai Presiden Republik Indonesia pada Pemilihan Presiden (Pilpres) 2014. Saat Pilpres tersebut Joko Widodo terpilih bersama pasangannya, Jusuf Kalla. Dalam Pilpres 2019, Joko Widodo kembali terpilih sebagai Presiden Republik Indonesia untuk masa jabatannya yang kedua. Kali ini, Joko Widodo didampingi oleh Wakil Presiden K.H. Ma’ruf Amin dan dilantik pada 20 Oktober 2019 untuk masa jabatan 2019 hingga 2024 mendatang. Pembangunan infrastruktur menjadi program prioritas di masa kepemimpinannya yang pertama. Pembangunan yang dilakukan secara merata hingga ke daerah terluar Indonesia ini dilakukan untuk mengejar ketertinggalan Indonesia dalam sektor ini dibandingkan negara-negara lain. Program prioritas tersebut dibarengi dengan program berupa bantuan sosial seperti Kartu Indonesia Pintar (KIP), Kartu Indonesia Sehat (KIS), hingga Program Keluarga Harapan (PKH). Selain itu, sejak awal masa jabatannya, Joko Widodo juga mengupayakan reforma agraria dengan salah satunya melakukan percepatan penerbitan sertifikat hak atas tanah untuk mengurangi terjadinya sengketa lahan oleh karena ketiadaan sertifikat. Di masa jabatannya yang kedua, Joko Widodo mengalihkan fokus pemerintahan pada pembangunan dan peningkatan kapasitas sumber daya manusia Indonesia untuk dapat bersaing dengan negara-negara lainnya. Adapun program pembangunan infrastruktur masih terus dilanjutkan bersamaan dengan itu.",
+          twitter: "@jokowidodo",
+          fb: "Joko Widodo",
+          ig: "joko_widodo",
         },
         {
-          src: require("../assets/JokoWi.jpg"),
-          title: "Joko Widodo",
-          rating: "13.231 kunjungan"
+          src: require("../assets/irmawan.jpg"),
+          title: "H. Irmawan, S.Sos., M.M.",
+          panggilan: "irmawan",
+          rating: "131.231 kunjungan",
+          ttl: "Aceh Tenggara / 21 Desember 1967",
+          daerah: "-",
+          mejabat: "-",
+          mencalonkan: "-",
+          fraksi: "-",
+          agama: "-",
+          pendidikan: [],
+          pengalaman: [],
+          prestasi: [],
+          biografi: "-",
+          twitter: "-",
+          fb: "-",
+          ig: "-",
         },
         {
-          src: require("../assets/JokoWi.jpg"),
-          title: "Joko Widodo",
-          rating: "13.231 kunjungan"
+          src: require("../assets/kadafi.jpg"),
+          title: "Dr. H. Muhammad Kadafi, S.H., M.H.",
+          panggilan: "muhammad kadafi",
+          rating: "100.231 kunjungan",
+          ttl: "Banda Aceh, 08 Oktober 1983",
+          daerah: "-",
+          mejabat: "-",
+          mencalonkan: "-",
+          fraksi: "-",
+          agama: "-",
+          pendidikan: [],
+          pengalaman: [],
+          prestasi: [],
+          biografi: "-",
+          twitter: "-",
+          fb: "-",
+          ig: "-",
         },
         {
-          src: require("../assets/JokoWi.jpg"),
-          title: "Joko Widodo",
-          rating: "13.231 kunjungan"
+          src: require("../assets/sofyan.jpg"),
+          title: "Sofyan Ali, S.Ag., S.H., M.Pd.",
+          panggilan: "sofyan ali",
+          rating: "80.231 kunjungan",
+          ttl: "Kota Jambi, 20 Oktober 1973",
+          daerah: "-",
+          mejabat: "-",
+          mencalonkan: "-",
+          fraksi: "-",
+          agama: "-",
+          pendidikan: [],
+          pengalaman: [],
+          prestasi: [],
+          biografi: "-",
+          twitter: "-",
+          fb: "-",
+          ig: "-",
         },
         {
-          src: require("../assets/JokoWi.jpg"),
-          title: "Joko Widodo",
-          rating: "13.231 kunjungan"
+          src: require("../assets/eem.jpg"),
+          title: "Neng Eem Marhamah Zulfa Hiz., M.M.",
+          panggilan: "neng eem",
+          rating: "13.231 kunjungan",
+          ttl: "Cianjur, 08 Mei 1979",
+          daerah: "-",
+          mejabat: "-",
+          mencalonkan: "-",
+          fraksi: "-",
+          agama: "-",
+          pendidikan: [],
+          pengalaman: [],
+          prestasi: [],
+          biografi: "-",
+          twitter: "-",
+          fb: "-",
+          ig: "-",
         },
       ]
     };
@@ -144,13 +249,15 @@ export default {
     viewMore(){
       this.viewMoreActivated = true;
     },
-    redirect(){
-      this.$router.push('/profilPejabat')
-    },
     redirectDetailBerita(item){
       this.$session.start()
       this.$session.set('newsDa', item)
-      this.$router.push('/DetailBeritaHomePage')
+      this.$router.push('/detailBeritaHomePage')
+    },
+    redirectProfilPejabat(item){
+      this.$session.start()
+      this.$session.set('dataPejabat', item)
+      this.$router.push('/profilPejabat')
     },
     async getnews() {
       const data = await APIServices.newsAntara()
